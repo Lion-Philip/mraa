@@ -24,7 +24,7 @@
 #include "arm/raspberry_pi.h"
 #include "arm/adlink_ipi.h"
 #include "mraa_internal.h"
-
+#include "arm/radxa_cm3.h"
 
 mraa_platform_t
 mraa_arm_platform()
@@ -116,6 +116,8 @@ mraa_arm_platform()
                  mraa_file_contains("/proc/device-tree/model", "Radxa ROCK 3 Model B")
                 )
             platform_type = MRAA_RADXA_ROCK_3_MODEL_A;
+        else if (mraa_file_contains("/proc/device-tree/model", "Radxa CM3 IO"))
+            platform_type = MRAA_RADXA_CM3;
         else if (mraa_file_contains("/proc/device-tree/compatible", "raspberrypi,"))
             platform_type = MRAA_RASPBERRY_PI;
         else if (mraa_file_contains("/proc/device-tree/model", "ADLINK ARM, LEC-PX30"))
@@ -158,6 +160,9 @@ mraa_arm_platform()
             break;
         case MRAA_RADXA_ROCK_3_MODEL_A:
             plat = mraa_radxa_rock3a();
+            break;
+         case MRAA_RADXA_CM3:
+            plat = mraa_radxa_cm3();
             break;
         case MRAA_DE_NANO_SOC:
             plat = mraa_de_nano_soc();
