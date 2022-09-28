@@ -26,6 +26,7 @@
 #include "mraa_internal.h"
 #include "arm/radxa_cm3.h"
 
+
 mraa_platform_t
 mraa_arm_platform()
 {
