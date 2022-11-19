@@ -16,6 +16,7 @@
 #include "arm/rockpie.h"
 #include "arm/rockpie_v11.h"
 #include "arm/radxa_zero.h"
+#include "arm/radxa_zero2.h"
 #include "arm/radxa_rock3a.h"
 #include "arm/de_nano_soc.h"
 #include "arm/banana.h"
@@ -111,6 +112,8 @@ mraa_arm_platform()
             platform_type = MRAA_ROCKPIE;
         else if (mraa_file_contains("/proc/device-tree/model", "Radxa Zero"))
             platform_type = MRAA_RADXA_ZERO;
+        else if (mraa_file_contains("/proc/device-tree/model", "Radxa Zero2"))
+            platform_type = MRAA_RADXA_ZERO2;
         else if (mraa_file_contains("/proc/device-tree/model", "Radxa ROCK3 Model A") ||
                  mraa_file_contains("/proc/device-tree/model", "Radxa ROCK3 Model B") ||
                  mraa_file_contains("/proc/device-tree/model", "Radxa ROCK 3 Model A") ||
@@ -158,6 +161,9 @@ mraa_arm_platform()
             break;
         case MRAA_RADXA_ZERO:
             plat = mraa_radxa_zero();
+            break;
+        case MRAA_RADXA_ZERO2:
+            plat = mraa_radxa_zero2();
             break;
         case MRAA_RADXA_ROCK_3_MODEL_A:
             plat = mraa_radxa_rock3a();
